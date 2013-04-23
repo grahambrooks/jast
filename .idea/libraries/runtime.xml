@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="runtime">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/runtime" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../antlr4-4.0/tool/src" />
+      <root url="file://$PROJECT_DIR$/../antlr4-4.0/tool/test" />
+      <root url="file://$PROJECT_DIR$/../antlr4-4.0/tool/playground" />
+      <root url="file://$PROJECT_DIR$/../antlr4-4.0/runtime/Java/src" />
+      <root url="file://$PROJECT_DIR$/../antlr4-4.0/antlr4-maven-plugin/src/main/java" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/runtime" recursive="false" />
+  </library>
+</component>
