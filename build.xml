@@ -6,8 +6,10 @@
     <property name="classes" value="${build.dir}/classes"/>
     <property name="one-jar.dist.dir" value="Tools/one-jar-ant"/>
 
-    <taskdef name="one-jar" classname="com.simontuffs.onejar.ant.OneJarTask"
-             classpath="tools/one-jar-ant-task-0.97.jar" onerror="report"/>
+    <taskdef name="one-jar"
+             classname="com.simontuffs.onejar.ant.OneJarTask"
+             classpath="tools/one-jar-ant-task-0.97.jar"
+             onerror="report"/>
 
     <path id="runtime.classpath">
         <pathelement location="lib/runtime/antlr-4.0-complete.jar"/>
@@ -35,11 +37,10 @@
     </target>
 
     <target name="package" depends="build">
-
         <one-jar destfile="jast.jar">
             <manifest>
-                <attribute name="Main-Class" value="jast/Console"/>
-                <attribute name="One-Jar-Main-Class" value="jast/Console"/>
+                <attribute name="Main-Class" value="jast.Console"/>
+                <attribute name="One-Jar-Main-Class" value="jast.Console"/>
             </manifest>
             <main>
                 <fileset dir="${classes}"/>

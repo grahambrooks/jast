@@ -18,17 +18,23 @@ import java.util.List;
 
 public class Console {
     public static void main(String[] args) throws IOException {
+        if (args.length >= 1) {
 
-        JavaLexer lexer = new JavaLexer(new ANTLRFileStream(args[0]));
-        JavaParser parser = new JavaParser(new CommonTokenStream(lexer));
+            JavaLexer lexer = new JavaLexer(new ANTLRFileStream(args[0]));
+            JavaParser parser = new JavaParser(new CommonTokenStream(lexer));
 
-        JavaParser.CompilationUnitContext compilationUnitContext = parser.compilationUnit();
+            JavaParser.CompilationUnitContext compilationUnitContext = parser.compilationUnit();
 
-        System.out.print(toStringTree(compilationUnitContext, parser));
+            System.out.print(toStringTree(compilationUnitContext, parser));
+        } else {
+            System.err.println("No source file supplied\n" +
+                    "Usage:\n" +
+                    "   java -jar jast.jar <file>\n");
+        }
     }
 
-    public static String toStringTree(Tree t, Parser recog) {
-        String[] ruleNames = recog != null ? recog.getRuleNames() : null;
+    public static String toStringTree(Tree t, Parser parser) {
+        String[] ruleNames = parser != null ? parser.getRuleNames() : null;
         List<String> ruleNamesList = ruleNames != null ? Arrays.asList(ruleNames) : null;
         return toStringTree(t, ruleNamesList);
     }
