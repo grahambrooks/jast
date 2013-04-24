@@ -8,7 +8,7 @@ file.
 
 	ant package
 
-## Usage
+## usage
 
 	java -jar jast.jar <file>
 
