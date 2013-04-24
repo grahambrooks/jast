@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project name="jast" default="build" basedir=".">
+
+    <property name="java.sources.dir" value="${basedir}/src/java"/>
+    <property name="build.dir" value="${basedir}/build"/>
+    <property name="classes" value="${build.dir}/classes"/>
+    <property name="one-jar.dist.dir" value="Tools/one-jar-ant"/>
+
+    <taskdef name="one-jar" classname="com.simontuffs.onejar.ant.OneJarTask"
+             classpath="tools/one-jar-ant-task-0.97.jar" onerror="report"/>
+
+    <path id="runtime.classpath">
+        <pathelement location="lib/runtime/antlr-4.0-complete.jar"/>
+    </path>
+
+    <target name="grammar">
+        <java jar="Tools/antlr-4.0-complete.jar" fork="yes" dir="src/antlr">
+            <arg value="Java.g4"/>
+            <arg value="-o"/>
+            <arg value="${basedir}/src/java/jast/Java"/>
+            <arg value="-visitor"/>
+        </java>
+    </target>
+
+    <target name="compile" depends="grammar">
+        <mkdir dir="${classes}"/>
+
+        <javac srcdir="${java.sources.dir}"
+               destdir="${classes}"
+               classpathref="runtime.classpath"
+               includeantruntime="no"/>
+    </target>
+
+    <target name="build" depends="compile">
+    </target>
+
+    <target name="package" depends="build">
+
+        <one-jar destfile="jast.jar">
+            <manifest>
+                <attribute name="Main-Class" value="jast/Console"/>
+                <attribute name="One-Jar-Main-Class" value="jast/Console"/>
+            </manifest>
+            <main>
+                <fileset dir="${classes}"/>
+            </main>
+            <lib>
+                <fileset file="lib/runtime/antlr-4.0-complete.jar"/>
+            </lib>
+        </one-jar>
+    </target>
+
+    <target name="clean">
+        <delete dir="build"/>
+        <delete file="src/java/jast/Java/Java.tokens"/>
+        <delete file="src/java/jast/Java/JavaBaseListener.java"/>
+        <delete file="src/java/jast/Java/JavaBaseVisitor.java"/>
+        <delete file="src/java/jast/Java/JavaLexer.java"/>
+        <delete file="src/java/jast/Java/JavaLexer.tokens"/>
+        <delete file="src/java/jast/Java/JavaListener.java"/>
+        <delete file="src/java/jast/Java/JavaParser.java"/>
+        <delete file="src/java/jast/Java/JavaVisitor.java"/>
+    </target>
+</project>

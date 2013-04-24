@@ -1,7 +1,7 @@
-package jtoj;
+package jast;
 
-import jtoj.Java.JavaLexer;
-import jtoj.Java.JavaParser;
+import jast.Java.JavaLexer;
+import jast.Java.JavaParser;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Parser;
