@@ -4,7 +4,7 @@
     <property name="java.sources.dir" value="${basedir}/src/java"/>
     <property name="build.dir" value="${basedir}/build"/>
     <property name="classes" value="${build.dir}/classes"/>
-    <property name="one-jar.dist.dir" value="Tools/one-jar-ant"/>
+    <property name="one-jar.dist.dir" value="tools/one-jar-ant"/>
 
     <taskdef name="one-jar"
              classname="com.simontuffs.onejar.ant.OneJarTask"
@@ -16,7 +16,7 @@
     </path>
 
     <target name="grammar">
-        <java jar="Tools/antlr-4.0-complete.jar" fork="yes" dir="src/antlr">
+        <java jar="tools/antlr-4.0-complete.jar" fork="yes" dir="src/antlr">
             <arg value="Java.g4"/>
             <arg value="-o"/>
             <arg value="${basedir}/src/java/jast/Java"/>
