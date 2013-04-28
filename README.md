@@ -12,4 +12,5 @@ file.
 
 	java -jar jast.jar <file>
 
-Outputs a text representation of the file's AST
+Outputs a text representation of the file's AST. The AST format uses brackets to group semantic elements, tokens are
+enclosed in square brackets [] and includes line number and offset in line
