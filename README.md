@@ -12,5 +12,4 @@ file.
 
 	java -jar jast.jar <file>
 
-
-
+Outputs a text representation of the file's AST
